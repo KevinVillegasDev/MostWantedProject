@@ -7,8 +7,7 @@
 
 // app is the function called to start the entire application
 function app(people) {
-  searchByHeight(people)
-
+  // searchByEyeColor(people);
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -89,30 +88,53 @@ function searchByName(people) {
     } else {
       return false;
     }
-  });
-  // TODO: find the person single person object using the name they entered.
+  }); // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-// function searchByEyeColor(people) {
-//   let eyecolor = PromptFor("What is the persons eye color?", customValidation);
+function searchByEyeColor(people) {
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
-//   let foundEyeColor = people.filter(function(potentialMatch){
-//     if (potentialMatch.eyecolor === eyecolor)
-//      {
-//       return true;{
-//        } else{
+  let foundEyeColor = people.filter(function (potentialMatch) {
+    if (potentialMatch.eyeColor === eyeColor) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundEyeColor;
+}
 
-//       return false;
-//   }
-  
-  
-  
-//   });
-//   return foundEyeColor
-// }
-// searchByEyeColor()
+function searchByOccupation(people) {
+  let occupation = promptFor("What is the person's occupation?", autoValid);
+
+  let foundOccupation = people.filter(function (potentialMatch) {
+    if (potentialMatch.occupation === occupation) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundOccupation;
+}
+
+function searchByDateOfBirth(people) {
+  let dateOfBirth = promptFor(
+    "What is the persons date of birth? Use MM/DD/YYYY",
+    autoValid
+  );
+
+  let foundDateOfBirth = people.filter(function (potentialMatch) {
+    if (potentialMatch.dateOfBirth === dateOfBirth) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundDateOfBirth;
+}
+
 //TODO: add other trait filter functions here.
 function searchByHeight(people) {
   let height = promptFor("What is the person's height?", autoValid);
@@ -216,11 +238,9 @@ function displayPerson(person) {
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid) {
-  
   do {
     var response = prompt(question).trim();
-    isValid = valid(response);
-  } while (!response == "" || !valid(response));
+  } while (!response || !valid(response));
   return response;
 }
 
@@ -241,7 +261,22 @@ function autoValid(input) {
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
-function customValidation(input) {}
+function customValidationEyeColor(input) {
+  //brown black hazel green blue
+  if (input.toLowerCase == "blue") {
+    return true;
+  } else if (input.toLowerCase === "green") {
+    return true;
+  } else if (input.toLowerCase === "hazel") {
+    return true;
+  } else if (input.toLowerCase === "black") {
+    return true;
+  } else if (input.toLowerCase === "brown") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 //#endregion

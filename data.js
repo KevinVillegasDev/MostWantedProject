@@ -1,6 +1,7 @@
 // You may modify this for testing purposes.
 const data = [
   {
+    //index 0
     id: 272822514,
     firstName: "Billy",
     lastName: "Bob",
@@ -14,6 +15,7 @@ const data = [
     currentSpouse: 401222887,
   },
   {
+    //index 1
     id: 401222887,
     firstName: "Uma",
     lastName: "Bob",
@@ -27,6 +29,7 @@ const data = [
     currentSpouse: 272822514,
   },
   {
+    //index 2
     id: 409574486,
     firstName: "Michael",
     lastName: "Walkens",
@@ -40,6 +43,7 @@ const data = [
     currentSpouse: 260451248,
   },
   {
+    //index 3
     id: 260451248,
     firstName: "Jon",
     lastName: "Walkens",
