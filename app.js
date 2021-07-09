@@ -88,9 +88,7 @@ function searchByName(people) {
     } else {
       return false;
     }
-  });
-
-  // TODO: find the person single person object using the name they entered.
+  }); // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
@@ -108,7 +106,34 @@ function searchByEyeColor(people) {
   return foundEyeColor;
 }
 
-function searchByOccupation(people) {}
+function searchByOccupation(people) {
+  let occupation = promptFor("What is the person's occupation?", autoValid);
+
+  let foundOccupation = people.filter(function (potentialMatch) {
+    if (potentialMatch.occupation === occupation) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundOccupation;
+}
+
+function searchByDateOfBirth(people) {
+  let dateOfBirth = promptFor(
+    "What is the persons date of birth? Use MM/DD/YYYY",
+    autoValid
+  );
+
+  let foundDateOfBirth = people.filter(function (potentialMatch) {
+    if (potentialMatch.dateOfBirth === dateOfBirth) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundDateOfBirth;
+}
 
 //TODO: add other trait filter functions here.
 
@@ -151,12 +176,9 @@ function displayPerson(person) {
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid) {
-  let response;
-  let isValid;
   do {
-    response = prompt(question).trim();
-    isValid = valid(response);
-  } while (response !== "" && isValid === false);
+    var response = prompt(question).trim();
+  } while (!response || !valid(response));
   return response;
 }
 
