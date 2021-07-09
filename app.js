@@ -7,6 +7,8 @@
 
 // app is the function called to start the entire application
 function app(people) {
+  searchByHeight(people)
+
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -93,9 +95,87 @@ function searchByName(people) {
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people) {}
+// function searchByEyeColor(people) {
+//   let eyecolor = PromptFor("What is the persons eye color?", customValidation);
 
+//   let foundEyeColor = people.filter(function(potentialMatch){
+//     if (potentialMatch.eyecolor === eyecolor)
+//      {
+//       return true;{
+//        } else{
+
+//       return false;
+//   }
+  
+  
+  
+//   });
+//   return foundEyeColor
+// }
+// searchByEyeColor()
 //TODO: add other trait filter functions here.
+function searchByHeight(people) {
+  let height = promptFor("What is the person's height?", autoValid);
+ 
+   let foundHeight = people.filter(function (potentialMatch) {
+    if (
+      potentialMatch.height === height
+  
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  // TODO: find the person single person object using the name they entered.
+  return foundHeight;
+}
+searchByHeight()
+
+function searchByGender(people) {
+  let gender = promptFor("What is the person's gender?", autoValid);
+ 
+   let foundGender = people.filter(function (potentialMatch) {
+    if (
+      potentialMatch.gender === gender
+  
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  
+  });
+  return foundGender;
+}
+
+  searchByGender(people)
+
+
+  function searchByWeight(people) {
+    let  = promptFor("What is the person's weight?", autoValid);
+   
+     let foundWeight = people.filter(function (potentialMatch) {
+      if (
+        potentialMatch.foundWeight === weight
+    
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    
+    });
+    return foundWeight;
+  }
+  
+    searchByWeight(people)
+
+
+
+    //return foundGender; TODO: find the person single person object using the name they entered.
+
+
 
 //#endregion
 
@@ -136,12 +216,11 @@ function displayPerson(person) {
 //isValid: Will capture the return of the validation function callback. true(the user input is valid)/false(the user input was not valid).
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid) {
-  let response;
-  let isValid;
+  
   do {
-    response = prompt(question).trim();
+    var response = prompt(question).trim();
     isValid = valid(response);
-  } while (response !== "" || isValid === false);
+  } while (!response == "" || !valid(response));
   return response;
 }
 
@@ -163,5 +242,6 @@ function autoValid(input) {
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
 function customValidation(input) {}
+
 
 //#endregion
