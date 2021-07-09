@@ -40,9 +40,9 @@ function mainMenu(person, people) {
 
   let displayOption = promptFor(
     "Found " +
-      person.firstName +
+      person[0].firstName +
       " " +
-      person.lastName +
+      person[0].lastName +
       " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'",
     autoValid
   );
@@ -199,17 +199,17 @@ function displayPeople(people) {
 function displayPerson(person) {
   // print all of the information about a person:
   // height, weight, age, name, occupation, eye color.
-  let personInfo = "First Name: " + person.firstName + "\n";
-  personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo += "Gender: " + person.gender + "\n";
-  personInfo += "DOB: " + person.dob + "\n";
-  personInfo += "Height: " + person.height + "\n";
-  personInfo += "Weight: " + person.weight + "\n";
-  personInfo += "Eye Color: " + person.eyeColor + "\n";
-  personInfo += "Occupation: " + person.occupation + "\n";
+  let personInfo = "First Name: " + person[0].firstName + "\n";
+  personInfo += "Last Name: " + person[0].lastName + "\n";
+  personInfo += "Gender: " + person[0].gender + "\n";
+  personInfo += "DOB: " + person[0].dob + "\n";
+  personInfo += "Height: " + person[0].height + "\n";
+  personInfo += "Weight: " + person[0].weight + "\n";
+  personInfo += "Eye Color: " + person[0].eyeColor + "\n";
+  personInfo += "Occupation: " + person[0].occupation + "\n";
 
   // TODO: finish getting the rest of the information to display.
-  alert(personInfo);
+  return personInfo;
 }
 
 //#endregion
