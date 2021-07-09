@@ -7,6 +7,7 @@
 
 // app is the function called to start the entire application
 function app(people) {
+  searchByEyeColor(people);
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -88,12 +89,26 @@ function searchByName(people) {
       return false;
     }
   });
+
   // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people) {}
+function searchByEyeColor(people) {
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
+
+  let foundEyeColor = people.filter(function (potentialMatch) {
+    if (potentialMatch.eyeColor === eyeColor) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundEyeColor;
+}
+
+function searchByOccupation(people) {}
 
 //TODO: add other trait filter functions here.
 
@@ -162,6 +177,21 @@ function autoValid(input) {
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
-function customValidation(input) {}
+function customValidationEyeColor(input) {
+  //brown black hazel green blue
+  if (input.toLowerCase == "blue") {
+    return true;
+  } else if (input.toLowerCase === "green") {
+    return true;
+  } else if (input.toLowerCase === "hazel") {
+    return true;
+  } else if (input.toLowerCase === "black") {
+    return true;
+  } else if (input.toLowerCase === "brown") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 //#endregion
