@@ -7,7 +7,7 @@
 
 // app is the function called to start the entire application
 function app(people) {
-  searchByEyeColor(people);
+  // searchByEyeColor(people);
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -156,7 +156,7 @@ function promptFor(question, valid) {
   do {
     response = prompt(question).trim();
     isValid = valid(response);
-  } while (response !== "" || isValid === false);
+  } while (response !== "" && isValid === false);
   return response;
 }
 
