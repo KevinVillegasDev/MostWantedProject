@@ -49,6 +49,7 @@ function mainMenu(person, people) {
 
   switch (displayOption) {
     case "info":
+      alert(displayPerson(person));
       // TODO: get person's info
       break;
     case "family":
@@ -148,7 +149,6 @@ function searchByHeight(people) {
   // TODO: find the person single person object using the name they entered.
   return foundHeight;
 }
-searchByHeight();
 
 function searchByGender(people) {
   let gender = promptFor("What is the person's gender?", autoValid);
@@ -163,8 +163,6 @@ function searchByGender(people) {
   return foundGender;
 }
 
-searchByGender(people);
-
 function searchByWeight(people) {
   let weight = promptFor("What is the person's weight?", autoValid);
 
@@ -177,8 +175,6 @@ function searchByWeight(people) {
   });
   return foundWeight;
 }
-
-searchByWeight(people);
 
 //return foundGender; TODO: find the person single person object using the name they entered.
 
@@ -206,7 +202,12 @@ function displayPerson(person) {
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo += "Gender: " + person.gender + "\n";
-  personInfo += "DOB: " + person.dob;
+  personInfo += "DOB: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
