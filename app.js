@@ -18,8 +18,30 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      // TODO: search by traits
+      let newSearchType = promptFor("Which of the following traits would you like to search by? Dob,Height, Weight, eyeColor,Occupation",autoValid
+      );
+    switch (newSearchType){
+      case "DOB":
+      searchResults = searchByDateOfBirth(people);
       break;
+      case "Gender":
+        searchResults = searchByGender(people);
+        break;
+        case "Height":
+        searchResults = searchByHeight(people);
+        break;
+        case "Weight": 
+        searchResults = searchByWeight(people);
+        break;
+        case "eyeColor": 
+        searchResults = searchByEyeColor(people);
+        alert("These are the people with" + searchResults + "eyes");
+        break;
+        case "Occupation":
+          searchResults = searchByOccupation(people);
+          break; 
+    }
+    break;
     default:
       app(people); // restart app
       break;
