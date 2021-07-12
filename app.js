@@ -7,6 +7,8 @@
 
 // app is the function called to start the entire application
 function app(people) {
+
+
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -85,15 +87,11 @@ function mainMenu(person, people) {
       // TODO: get person's info
       break;
     case "family":
-      let newSearchType = promptFor(
-        "Which family member would you like to search for? Siblings or Spouse?",
-        autoValid
-      );
-      switch (newSearchType) {
-        case "Sibling":
-      }
-
-      // TODO: get person's family
+      let spouse = searchBySpouse(person,people);
+      // let siblings = searchBySiblings(person,people);  //search for persons with matching parents of person
+      // let parents = searchByParents(person,people);
+      alert(spouse[0].firstName + " " + spouse[0].lastName);
+      // alert(`${spouse[0].firstName} ${spouse[0].lastName} is ${person[0].firstName}'s spouse.\n`);
       break;
     case "descendants":
       // TODO: get person's descendants
@@ -108,16 +106,21 @@ function mainMenu(person, people) {
   }
 }
 
-function searchSpouse(people) {
+function searchBySpouse(person, people) {
+  
   let foundSpouse = people.filter(function (potentialMatch) {
-    if (potentialMatch.id === currentSpouse) {
+    if (potentialMatch.id === person[0].currentSpouse) {
       return true;
     } else {
       return false;
     }
   });
-  return foundSpouse;
+
+   return foundSpouse;
+   
 }
+
+
 //#endregion
 
 //Filter functions.
