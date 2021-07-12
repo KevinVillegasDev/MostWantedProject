@@ -7,7 +7,6 @@
 
 // app is the function called to start the entire application
 function app(people) {
-  // searchByEyeColor(people);
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -19,7 +18,7 @@ function app(people) {
       break;
     case "no":
       let newSearchType = promptFor(
-        "Which of the following traits would you like to search by? Dob, Height, Weight, eyeColor,Occupation",
+        "Which of the following traits would you like to search by? Dob, Height, Weight, eyeColor, or Occupation? If multiple, enter multiple",
         autoValid
       );
       switch (newSearchType) {
@@ -45,6 +44,10 @@ function app(people) {
           break;
         case "Occupation":
           searchResults = searchByOccupation(people);
+          displayPeople(searchResults);
+          break;
+        case "multiple":
+          searchResults = searchByMultipleTraits(people);
           displayPeople(searchResults);
           break;
       }
@@ -204,6 +207,20 @@ function searchByWeight(people) {
   return foundWeight;
 }
 
+// function searchByMultipleTraits(people) {
+//   let desiredSearchTraits = promptFor(
+//     "What traits would you like to search for?",
+//     autoValid
+//   );
+//   let foundMultipleTraits = people.filter(function (potentialMatch) {
+//     if (potentialMatch.foundMultipleTraits === desiredSearchTraits) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+//   return foundMultipleTraits;
+// }
 //#endregion
 
 //Display functions.
