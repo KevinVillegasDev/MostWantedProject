@@ -68,13 +68,19 @@ function mainMenu(person, people) {
       " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'",
     autoValid
   );
-
+ 
   switch (displayOption) {
     case "info":
       alert(displayPerson(person));
       // TODO: get person's info
       break;
     case "family":
+      let newSearchType = promptFor("Which family member would you like to search for? Siblings or Spouse?",autoValid
+      );
+      switch(newSearchType){
+       case "Sibling":
+      }
+
       // TODO: get person's family
       break;
     case "descendants":
@@ -90,6 +96,19 @@ function mainMenu(person, people) {
   }
 }
 
+function searchSpouse(people){
+ let foundSpouse = people.filter(function(potentialMatch){
+   if (
+     potentialMatch.id === currentSpouse 
+     ) {
+      return true;
+    } else {
+      return false;
+    }
+  }); 
+  return foundSpouse;
+
+// TODO: find the person single person object using the name they entered.
 //#endregion
 
 //Filter functions.
@@ -198,7 +217,8 @@ function searchByWeight(people) {
   return foundWeight;
 }
 
-//return foundGender; TODO: find the person single person object using the name they entered.
+// //return foundGender; 
+// TODO: find the person single person object using the name they entered.
 
 //#endregion
 
