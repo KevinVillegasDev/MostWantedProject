@@ -117,7 +117,7 @@ function searchSpouse(people){
     }
   }); 
   return foundSpouse;
-
+}
 // TODO: find the person single person object using the name they entered.
 //#endregion
 
@@ -225,27 +225,22 @@ function searchByWeight(people) {
   });
   return foundWeight;
 }
+//eyeColor, gender, weight
+function searchByMultipleTraits(people) {
 
-<<<<<<< HEAD
-// function searchByMultipleTraits(people) {
-//   let desiredSearchTraits = promptFor(
-//     "What traits would you like to search for?",
-//     autoValid
-//   );
-//   let foundMultipleTraits = people.filter(function (potentialMatch) {
-//     if (potentialMatch.foundMultipleTraits === desiredSearchTraits) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   });
-//   return foundMultipleTraits;
-// }
-=======
-// //return foundGender; 
-// TODO: find the person single person object using the name they entered.
+  let searchResults = people;
 
->>>>>>> 5b12a24dde0a62fc8ebafaffdcf786885a333580
+  let eyeColorSearch = promptFor("Do you know their eyeColor?", yesNo);
+  if(eyeColorSearch == "yes"){
+    searchResults = searchByEyeColor(searchResults);
+  }
+  let genderSearch =  promptFor("Do you know their gender?", yesNo);
+  if(genderSearch == "yes"){
+    searchResults = searchByGender(searchResults);
+  }
+  console.log(searchResults);
+  return searchResults;
+}
 //#endregion
 
 //Display functions.
