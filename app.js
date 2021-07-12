@@ -238,6 +238,23 @@ function searchByMultipleTraits(people) {
   if (genderSearch == "yes") {
     searchResults = searchByGender(searchResults);
   }
+  let dobSearch = promptFor("Do you know their dob?", yesNo);
+  if (dobSearch == "yes") {
+    searchResults = searchByDateOfBirth(searchResults);
+  }
+  let heightSearch = promptFor("Do you know their height?", yesNo);
+  if (heightSearch == "yes") {
+    searchResults = searchByHeight(searchResults);
+  }
+  let weightSearch = promptFor("Do you know their weight?", yesNo);
+  if (weightSearch == "yes") {
+    searchResults = searchByWeight(searchResults);
+  }
+  let occupationSearch = promptFor("Do you know their occupation?", yesNo);
+  if (occupationSearch == "yes") {
+    searchResults = searchByOccupation(searchResults);
+  }
+  return searchResults;
 }
 //#endregion
 
