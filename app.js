@@ -18,30 +18,37 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      let newSearchType = promptFor("Which of the following traits would you like to search by? Dob,Height, Weight, eyeColor,Occupation",autoValid
+      let newSearchType = promptFor(
+        "Which of the following traits would you like to search by? Dob, Height, Weight, eyeColor,Occupation",
+        autoValid
       );
-    switch (newSearchType){
-      case "DOB":
-      searchResults = searchByDateOfBirth(people);
-      break;
-      case "Gender":
-        searchResults = searchByGender(people);
-        break;
+      switch (newSearchType) {
+        case "DOB":
+          searchResults = searchByDateOfBirth(people);
+          displayPeople(searchResults);
+          break;
+        case "Gender":
+          searchResults = searchByGender(people);
+          displayPeople(searchResults);
+          break;
         case "Height":
-        searchResults = searchByHeight(people);
-        break;
-        case "Weight": 
-        searchResults = searchByWeight(people);
-        break;
-        case "eyeColor": 
-        searchResults = searchByEyeColor(people);
-        alert("These are the people with" + searchResults + "eyes");
-        break;
+          searchResults = searchByHeight(people);
+          displayPeople(searchResults);
+          break;
+        case "Weight":
+          searchResults = searchByWeight(people);
+          displayPeople(searchResults);
+          break;
+        case "eyeColor":
+          searchResults = searchByEyeColor(people);
+          displayPeople(searchResults);
+          break;
         case "Occupation":
           searchResults = searchByOccupation(people);
-          break; 
-    }
-    break;
+          displayPeople(searchResults);
+          break;
+      }
+      break;
     default:
       app(people); // restart app
       break;
@@ -111,7 +118,7 @@ function searchByName(people) {
     } else {
       return false;
     }
-  }); // TODO: find the person single person object using the name they entered.
+  });
   return foundPerson;
 }
 
@@ -157,7 +164,6 @@ function searchByDateOfBirth(people) {
   return foundDob;
 }
 
-//TODO: add other trait filter functions here.
 function searchByHeight(people) {
   let height = promptFor("What is the person's height?", autoValid);
 
@@ -168,7 +174,7 @@ function searchByHeight(people) {
       return false;
     }
   });
-  // TODO: find the person single person object using the name they entered.
+
   return foundHeight;
 }
 
@@ -197,8 +203,6 @@ function searchByWeight(people) {
   });
   return foundWeight;
 }
-
-//return foundGender; TODO: find the person single person object using the name they entered.
 
 //#endregion
 
@@ -230,7 +234,6 @@ function displayPerson(person) {
   personInfo += "Eye Color: " + person[0].eyeColor + "\n";
   personInfo += "Occupation: " + person[0].occupation + "\n";
 
-  // TODO: finish getting the rest of the information to display.
   return personInfo;
 }
 
