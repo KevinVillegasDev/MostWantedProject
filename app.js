@@ -78,13 +78,19 @@ function mainMenu(person, people) {
       " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'",
     autoValid
   );
-
+ 
   switch (displayOption) {
     case "info":
       alert(displayPerson(person));
       // TODO: get person's info
       break;
     case "family":
+      let newSearchType = promptFor("Which family member would you like to search for? Siblings or Spouse?",autoValid
+      );
+      switch(newSearchType){
+       case "Sibling":
+      }
+
       // TODO: get person's family
       break;
     case "descendants":
@@ -100,6 +106,19 @@ function mainMenu(person, people) {
   }
 }
 
+function searchSpouse(people){
+ let foundSpouse = people.filter(function(potentialMatch){
+   if (
+     potentialMatch.id === currentSpouse 
+     ) {
+      return true;
+    } else {
+      return false;
+    }
+  }); 
+  return foundSpouse;
+
+// TODO: find the person single person object using the name they entered.
 //#endregion
 
 //Filter functions.
@@ -207,6 +226,7 @@ function searchByWeight(people) {
   return foundWeight;
 }
 
+<<<<<<< HEAD
 // function searchByMultipleTraits(people) {
 //   let desiredSearchTraits = promptFor(
 //     "What traits would you like to search for?",
@@ -221,6 +241,11 @@ function searchByWeight(people) {
 //   });
 //   return foundMultipleTraits;
 // }
+=======
+// //return foundGender; 
+// TODO: find the person single person object using the name they entered.
+
+>>>>>>> 5b12a24dde0a62fc8ebafaffdcf786885a333580
 //#endregion
 
 //Display functions.
@@ -288,7 +313,7 @@ function autoValid(input) {
 }
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
-//can be used for things like eye color validation for example.
+//can be used for things like eye color givalidation for example.
 function customValidationEyeColor(input) {
   //brown black hazel green blue
   if (input.toLowerCase == "blue") {
