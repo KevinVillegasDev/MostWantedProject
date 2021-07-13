@@ -63,8 +63,6 @@ function app(people) {
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
   if (!person) {
     alert("Could not find that individual.");
     return app(people); // restart
@@ -84,14 +82,11 @@ function mainMenu(person, people) {
       alert(displayPerson(person));
       break;
     case "family":
-      let newSearchType = promptFor(
-        "Which family member would you like to search for? Siblings or Spouse?",
-        autoValid
-      );
-      switch (newSearchType) {
-        case "Sibling":
-      }
-
+      let spouse = searchBySpouse(person, people);
+      // let siblings = searchBySiblings(person,people);  //search for persons with matching parents of person
+      // let parents = searchByParents(person,people);
+      alert(spouse[0].firstName + " " + spouse[0].lastName);
+      // alert(`${spouse[0].firstName} ${spouse[0].lastName} is ${person[0].firstName}'s spouse.\n`);
       break;
     case "descendants":
       alert(descendantsRecursion(people, person));
@@ -106,7 +101,6 @@ function mainMenu(person, people) {
       return mainMenu(person, people); // ask again
   }
 }
-
 function descendantsRecursion(people, person) {
   //two for loops, uses .include and .concat
   let descendantArray = [];
@@ -120,16 +114,18 @@ function descendantsRecursion(people, person) {
   for (let i = 0; i < newArray.length; i++) {} //
 }
 
-function searchSpouse(people) {
+function searchBySpouse(person, people) {
   let foundSpouse = people.filter(function (potentialMatch) {
-    if (potentialMatch.id === currentSpouse) {
+    if (potentialMatch.id === person[0].currentSpouse) {
       return true;
     } else {
       return false;
     }
   });
+
   return foundSpouse;
 }
+
 //#endregion
 
 //Filter functions.
