@@ -7,8 +7,6 @@
 
 // app is the function called to start the entire application
 function app(people) {
-
-
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
     yesNo
@@ -65,8 +63,6 @@ function app(people) {
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
   if (!person) {
     alert("Could not find that individual.");
     return app(people); // restart
@@ -84,7 +80,6 @@ function mainMenu(person, people) {
   switch (displayOption) {
     case "info":
       alert(displayPerson(person));
-      // TODO: get person's info
       break;
     case "family": 
       
@@ -98,7 +93,8 @@ function mainMenu(person, people) {
       // alert(`${parent[0].firstName} ${parent[0].lastName} is/are ${person[0].firstName}'s parent(s).`)
       break;
     case "descendants":
-      // TODO: get person's descendants
+      alert(descendantsRecursion(people, person));
+
       break;
     case "restart":
       app(people); // restart
@@ -108,6 +104,18 @@ function mainMenu(person, people) {
     default:
       return mainMenu(person, people); // ask again
   }
+}
+function descendantsRecursion(people, person) {
+  //two for loops, uses .include and .concat
+  let descendantArray = [];
+  for (let i = 0; i < people.length; i++) {
+    if (people[i].id === person[i].id) {
+      descendantArray.push(person[i].id);
+      return descendantArray;
+    }
+  }
+
+  for (let i = 0; i < newArray.length; i++) {} //
 }
 
 
@@ -174,7 +182,6 @@ function displayDescendants(myPeople, people) {
   displayPeople(foundPerson);
 }
 
-
 //#endregion
 
 //Filter functions.
@@ -182,7 +189,6 @@ function displayDescendants(myPeople, people) {
 /////////////////////////////////////////////////////////////////
 //#region
 
-//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", autoValid);
   let lastName = promptFor("What is the person's last name?", autoValid);
@@ -200,7 +206,6 @@ function searchByName(people) {
   return foundPerson;
 }
 
-//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
   let eyeColor = promptFor("What is the person's eye color?", autoValid);
 
